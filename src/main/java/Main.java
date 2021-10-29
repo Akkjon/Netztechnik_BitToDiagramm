@@ -37,9 +37,11 @@ public class Main {
             case ("manchester") -> new ManchesterDiagram(sequence);
             default -> null;
         };
+
         if(diagram == null) {
             throw new IllegalArgumentException(String.format("Method '%s' is not supported", method));
         }
+
         BufferedImage img = diagram.get();
 
         // Diagramm als Datei speichern
