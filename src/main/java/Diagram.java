@@ -66,33 +66,43 @@ public class Diagram {
         //pegelmarkierung y-achse
         g.drawString(
                 "0",
-                ImageProperties.PADDING - 20,
-                ImageProperties.bottomLinePoint + (ImageProperties.FONT_SIZE / 2) - 2);
+                ImageProperties.PADDING - 23,
+                ImageProperties.LEVEL_Y_ZERO + (ImageProperties.FONT_SIZE / 2) - 2);
         g.drawLine(
                 ImageProperties.PADDING,
-                ImageProperties.bottomLinePoint,
+                ImageProperties.LEVEL_Y_ZERO,
                 ImageProperties.PADDING - 10,
-                ImageProperties.bottomLinePoint);
+                ImageProperties.LEVEL_Y_ZERO);
 
         g.drawString(
                 "1",
                 ImageProperties.PADDING - 20,
-                ImageProperties.PADDING + ImageProperties.TOP_PADDING + (ImageProperties.FONT_SIZE / 2) - 2);
+                ImageProperties.LEVEL_Y_POS + (ImageProperties.FONT_SIZE / 2) - 2);
         g.drawLine(
                 ImageProperties.PADDING,
-                ImageProperties.topLinePoint,
+                ImageProperties.LEVEL_Y_POS,
                 ImageProperties.PADDING - 10,
-                ImageProperties.topLinePoint);
+                ImageProperties.LEVEL_Y_POS);
+
+        g.drawString(
+                "-1",
+                ImageProperties.PADDING - 27,
+                ImageProperties.LEVEL_Y_NEG + (ImageProperties.FONT_SIZE / 2) - 2);
+        g.drawLine(
+                ImageProperties.PADDING,
+                ImageProperties.LEVEL_Y_NEG,
+                ImageProperties.PADDING - 10,
+                ImageProperties.LEVEL_Y_NEG);
 
         g.setStroke(new BasicStroke(2));
 
-        for(int i = 1; i<sequence.length(); i++) {
+        for(int i = 0; i<sequence.length(); i++) {
             // Taktzeitmarkierung auf x-Achse
             g.drawLine(
-                    (i*signalSpacing)+ImageProperties.PADDING,
-                    ImageProperties.bottomPoint + (ImageProperties.TOP_PADDING / 2),
-                    (i*signalSpacing)+ImageProperties.PADDING,
-                    ImageProperties.bottomPoint - (ImageProperties.TOP_PADDING / 2));
+                    (i * signalSpacing) + (signalSpacing / 2) + ImageProperties.PADDING,
+                    ImageProperties.HEIGHT - ImageProperties.PADDING + (ImageProperties.TOP_PADDING / 2),
+                    (i * signalSpacing) + (signalSpacing / 2) + ImageProperties.PADDING,
+                    ImageProperties.HEIGHT - ImageProperties.PADDING - (ImageProperties.TOP_PADDING / 2));
         }
     }
 

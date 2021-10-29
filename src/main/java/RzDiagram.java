@@ -11,22 +11,22 @@ public class RzDiagram extends Diagram{
         for (String s : sequence.split("")) {
 
             // Pegel
-            int y = s.equals("0") ? ImageProperties.bottomLinePoint : ImageProperties.topLinePoint;
-            g.drawLine(x, ImageProperties.bottomLinePoint, x, y);
+            int y = s.equals("0") ? ImageProperties.LEVEL_Y_ZERO : ImageProperties.LEVEL_Y_POS;
+            g.drawLine(x, ImageProperties.LEVEL_Y_ZERO, x, y);
 
             g.drawLine(
                     x + (signalSpacing / 2),
                     y,
                     x + (signalSpacing / 2),
-                    ImageProperties.bottomLinePoint);
+                    ImageProperties.LEVEL_Y_ZERO);
 
             g.drawLine(x, y, x + (signalSpacing / 2), y);
 
             g.drawLine(
                     x + (signalSpacing / 2),
-                    ImageProperties.bottomLinePoint,
+                    ImageProperties.LEVEL_Y_ZERO,
                     x + signalSpacing,
-                    ImageProperties.bottomLinePoint);
+                    ImageProperties.LEVEL_Y_ZERO);
 
             //lastY = y;
             x += signalSpacing;

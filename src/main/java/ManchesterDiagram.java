@@ -8,50 +8,38 @@ public class ManchesterDiagram extends Diagram {
     protected void drawSignal() {
         String last = sequence.split("")[0].equals("0") ? "1" : "0";
 
+        int[] positions = {ImageProperties.LEVEL_Y_POS, ImageProperties.LEVEL_Y_NEG};
+
         // Über Bits der Eingabe iterieren
         for (String s : sequence.split("")) {
 
+            int pos0 = s.equals("0") ? 1 : 0;
+
             // Pegel
-            //TODO ich weiß, das sieht grässlich aus.. ich hatte keine Lust mehr...
-            if(s.equals("0")) {
-                g.drawLine(
-                        x - (signalSpacing / 2),
-                        ImageProperties.bottomLinePoint,
-                        x,
-                        ImageProperties.bottomLinePoint
-                );
+            g.drawLine(
+                    x,
+                    positions[pos0],
+                    x + (signalSpacing / 2),
+                    positions[pos0]
+            );
 
-                g.drawLine(
-                        x + (signalSpacing / 2),
-                        ImageProperties.topLinePoint,
-                        x,
-                        ImageProperties.topLinePoint
-                );
-            } else {
-                g.drawLine(
-                        x - (signalSpacing / 2),
-                        ImageProperties.topLinePoint,
-                        x,
-                        ImageProperties.topLinePoint
-                );
+            g.drawLine(
+                    x + (signalSpacing / 2),
+                    positions[Math.abs(pos0 - 1)],
+                    x + signalSpacing,
+                    positions[Math.abs(pos0 - 1)]
+            );
 
-                g.drawLine(
-                        x + (signalSpacing / 2),
-                        ImageProperties.bottomLinePoint,
-                        x,
-                        ImageProperties.bottomLinePoint
-                );
-            }
             if(last.equals(s)) {
                 g.drawLine(
-                        x - (signalSpacing / 2),
-                        ImageProperties.bottomLinePoint,
-                        x - (signalSpacing / 2),
-                        ImageProperties.topLinePoint
+                        x,
+                        ImageProperties.LEVEL_Y_NEG,
+                        x,
+                        ImageProperties.LEVEL_Y_POS
                 );
             }
 
-            g.drawLine(x, ImageProperties.bottomLinePoint, x, ImageProperties.topLinePoint);
+            g.drawLine(x + (signalSpacing / 2), ImageProperties.LEVEL_Y_NEG, x + (signalSpacing / 2), ImageProperties.LEVEL_Y_POS);
 
             x+=signalSpacing;
             last = s;

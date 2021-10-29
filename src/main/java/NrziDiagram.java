@@ -7,13 +7,13 @@ public class NrziDiagram extends Diagram {
     @Override
     protected void drawSignal() {
 
-        int lastY = ImageProperties.bottomLinePoint;
+        int lastY = ImageProperties.LEVEL_Y_ZERO;
 
         for(String s : sequence.split("")) {
             int y = lastY;
             if(s.equals("1")) {
-                y = lastY==ImageProperties.bottomLinePoint
-                        ? ImageProperties.topLinePoint : ImageProperties.bottomLinePoint;
+                y = lastY==ImageProperties.LEVEL_Y_ZERO
+                        ? ImageProperties.LEVEL_Y_POS : ImageProperties.LEVEL_Y_ZERO;
             }
 
             g.drawLine(
