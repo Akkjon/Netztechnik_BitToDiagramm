@@ -18,7 +18,7 @@ public class Main {
         System.out.println("Bitfolge eingeben: ");
         String sequence = scanner.nextLine();
 
-        System.out.println("Kodierungsverfahren eingeben (NRZ, RZ, AMI, Manchester):");
+        System.out.println("Kodierungsverfahren eingeben (NRZ, NRZI, RZ, AMI, Manchester):");
         String method = scanner.nextLine();
 
         scanner.close();
@@ -33,7 +33,7 @@ public class Main {
             case ("nrz")        -> new NrzDiagram(sequence);
             case ("nrzi")       -> new NrziDiagram(sequence);
             case ("rz")         -> new RzDiagram(sequence);
-            case ("ami")        -> null;
+            case ("ami")        -> new AmiDiagram(sequence);
             case ("manchester") -> new ManchesterDiagram(sequence);
             default -> null;
         };
