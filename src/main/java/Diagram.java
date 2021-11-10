@@ -99,9 +99,9 @@ public class Diagram {
         for(int i = 0; i<sequence.length(); i++) {
             // Taktzeitmarkierung auf x-Achse
             g.drawLine(
-                    (i * signalSpacing) + (signalSpacing / 2) + ImageProperties.PADDING,
+                    (i * signalSpacing) + ImageProperties.PADDING,
                     ImageProperties.HEIGHT - ImageProperties.PADDING + (ImageProperties.TOP_PADDING / 2),
-                    (i * signalSpacing) + (signalSpacing / 2) + ImageProperties.PADDING,
+                    (i * signalSpacing) + ImageProperties.PADDING,
                     ImageProperties.HEIGHT - ImageProperties.PADDING - (ImageProperties.TOP_PADDING / 2));
         }
     }

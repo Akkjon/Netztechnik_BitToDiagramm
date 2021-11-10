@@ -2,6 +2,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Main {
@@ -18,15 +19,24 @@ public class Main {
         System.out.println("Bitfolge eingeben: ");
         String sequence = scanner.nextLine();
 
+        // Eingabe validieren
+        if (sequence.replace("0", "").replace("1", "").trim().length() > 0) {
+            //throw new IllegalArgumentException(String.format("input  '%s' does not only contain 0 or 1", sequence));
+            StringBuilder newSequence = new StringBuilder();
+            for (byte abyte : sequence.getBytes()) {
+                StringBuilder str = new StringBuilder(Integer.toBinaryString(abyte));
+                for(int i = 0; i<8-(str.length()); i++) {
+                    str.insert(0, "0");
+                }
+                newSequence.append(str);
+            }
+            sequence = newSequence.toString();
+        }
+
         System.out.println("Kodierungsverfahren eingeben (NRZ, NRZI, RZ, AMI, Manchester):");
         String method = scanner.nextLine();
 
         scanner.close();
-
-        // Eingabe validieren
-        if (sequence.replace("0", "").replace("1", "").trim().length() > 0) {
-            throw new IllegalArgumentException(String.format("input  '%s' does not only contain 0 or 1", sequence));
-        }
 
         // Diagramm erzeugen
         Diagram diagram = switch (method.toLowerCase().strip()) {

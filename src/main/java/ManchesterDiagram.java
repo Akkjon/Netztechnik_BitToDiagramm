@@ -17,29 +17,29 @@ public class ManchesterDiagram extends Diagram {
 
             // Pegel
             g.drawLine(
-                    x,
+                    x - (signalSpacing / 2),
                     positions[pos0],
-                    x + (signalSpacing / 2),
+                    x,
                     positions[pos0]
             );
 
             g.drawLine(
-                    x + (signalSpacing / 2),
+                    x,
                     positions[Math.abs(pos0 - 1)],
-                    x + signalSpacing,
+                    x + (signalSpacing / 2),
                     positions[Math.abs(pos0 - 1)]
             );
 
             if(last.equals(s)) {
                 g.drawLine(
-                        x,
+                        x - (signalSpacing / 2),
                         ImageProperties.LEVEL_Y_NEG,
-                        x,
+                        x - (signalSpacing / 2),
                         ImageProperties.LEVEL_Y_POS
                 );
             }
 
-            g.drawLine(x + (signalSpacing / 2), ImageProperties.LEVEL_Y_NEG, x + (signalSpacing / 2), ImageProperties.LEVEL_Y_POS);
+            g.drawLine(x, ImageProperties.LEVEL_Y_NEG, x, ImageProperties.LEVEL_Y_POS);
 
             x+=signalSpacing;
             last = s;
