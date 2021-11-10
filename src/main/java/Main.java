@@ -28,6 +28,9 @@ public class Main {
                 for(int i = 0; i<8-(str.length()); i++) {
                     str.insert(0, "0");
                 }
+                if(str.length()>8) {
+                    str = new StringBuilder(str.substring(str.length() - 8));
+                }
                 newSequence.append(str);
             }
             sequence = newSequence.toString();
